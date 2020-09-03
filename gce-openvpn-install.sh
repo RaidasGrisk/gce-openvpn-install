@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# check if google accoutn auth
+# check if google account is authenticated
 # https://cloud.google.com/sdk/gcloud/reference/auth/list
 # https://stackoverflow.com/questions/35311686/how-to-get-the-active-authenticated-gcloud-account
 gcloud auth list --filter=status:ACTIVE --format="value(account)"
 gcloud config get-value account
 
 # set constants
-PROJECT_ID="personal-openvpn"
-VM_NAME="vm-personal-openvpn"
-MACHINE_TYPE="f1-micro"
-REGION="us-central1-c"
+read -e -p 'PROJECT_ID: ' -i 'personal-openvpn' PROJECT_ID
+read -e -p 'VM_NAME: ' -i 'vm-personal-openvpn' VM_NAME
+read -e -p 'MACHINE_TYPE: ' -i 'f1-micro' MACHINE_TYPE
+read -e -p 'REGION: ' -i 'us-central1-c' REGION
 
 # create google cloud project
 gcloud projects create $PROJECT_ID
